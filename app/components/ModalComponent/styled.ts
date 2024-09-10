@@ -32,4 +32,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 15px;
+  padding: 15px;
 `;

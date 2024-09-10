@@ -1,16 +1,34 @@
 //import { useState } from "react";
 
+import Button from "../ButtonComponent";
+import InputComponent from "../InputFieldComponent";
 import { Wrapper } from "./styled";
 
-export default function ReusableModal() {
+export default function ReusableModal({
+  title,
+  onClick,
+}: {
+  title: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}) {
   return (
     <Wrapper>
-      <label htmlFor="username">USER NAME</label>
-      <input type="text" id="username" />
+      <h1>
+        <b>{title}</b>
+      </h1>
 
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" required />
-      <button type="button"></button>
+      <InputComponent
+        inputType="text"
+        inputID="username"
+        labelName="username"
+      />
+
+      <InputComponent
+        inputType="password"
+        inputID="password"
+        labelName="password"
+      />
+      <Button text="Login" onClick={onClick} />
     </Wrapper>
   );
 }
