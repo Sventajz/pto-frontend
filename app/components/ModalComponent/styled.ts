@@ -25,6 +25,7 @@ export const ModalWindow = styled.div`
 export const Wrapper = styled.div`
   border-radius: 24px;
   height: 100%;
+  min-height: 400px;
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);

@@ -3,11 +3,17 @@
 // import axios from "axios";
 
 import { useState } from "react";
-
-import { Login } from "./styled";
+import Image from "next/image";
 import InputComponent from "../InputFieldComponent";
-import { Wrapper } from "../ModalComponent/styled";
 import Button from "../ButtonComponent";
+
+import {
+  Login,
+  LoginWrapper,
+  LoginLogoWrapper,
+  LoginImgWrapper,
+} from "./styled";
+import { Wrapper } from "../ModalComponent/styled";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -28,30 +34,58 @@ const LoginForm = () => {
   };
 
   return (
-    <Login>
-      <Wrapper>
-        <h1>
-          <b>PTO system</b>
-        </h1>
-
-        <InputComponent
-          inputType="text"
-          inputID="email"
-          labelName="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+    <LoginWrapper>
+      <LoginImgWrapper>
+        <Image
+          src="/loginbackground.png"
+          alt="picture of locket for login page"
+          height={0}
+          width={0}
+          sizes="60vw"
+          style={{
+            width: "100%",
+            height: "100%",
+            filter: "sepia(50%)",
+          }}
         />
-
-        <InputComponent
-          inputType="password"
-          inputID="password"
-          labelName="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+      </LoginImgWrapper>
+      <Login>
+        <Wrapper>
+          <h1>
+            <b>PTO system</b>
+          </h1>
+          <InputComponent
+            inputType="text"
+            inputID="email"
+            labelName="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <InputComponent
+            inputType="password"
+            inputID="password"
+            labelName="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button text="Login" onClick={handleLogin} />
+        </Wrapper>
+      </Login>
+      <LoginLogoWrapper>
+        <Image
+          src="/kantunlogo.svg"
+          alt="picture of locket for login page"
+          height={0}
+          width={0}
+          sizes="60vw"
+          style={{
+            width: "100%",
+            height: "100%",
+            filter: "sepia(50%)",
+          }}
         />
-        <Button text="Login" onClick={handleLogin} />
-      </Wrapper>
-    </Login>
+      </LoginLogoWrapper>
+    </LoginWrapper>
   );
 };
 
