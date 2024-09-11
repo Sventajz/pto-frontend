@@ -1,6 +1,6 @@
 "use client";
-// import { useContext, useState } from "react";
-// import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import {
   Banner,
@@ -22,56 +22,66 @@ import {
 // }
 
 export default function SideBar({}) {
-  // const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   // //const user = useContext(UserContext);
 
-  // const toggleIsOpen = () => {
-  //   setIsOpen((prev) => !prev);
-  // };
+  const toggleIsOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
 
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
   return (
-    <SideBarComponent>
-      <HamburgerButton>
+    <SideBarComponent $isOpen={isOpen}>
+      <HamburgerButton onClick={toggleIsOpen} $isOpen={isOpen}>
         <div></div>
         <div></div>
         <div></div>
       </HamburgerButton>
       <Banner>
         <img src="/kantunlogo.svg" alt="Kantun Logo" />
-        <h3>PTO System</h3>
+        {isOpen && <h3>PTO System</h3>}
       </Banner>
       <SideBarItems>
         <StyledLink href="/dashboard/welcome">
-          <SideBarButtons>
+          {/* $isOpen={isOpen} */}
+          <SideBarButtons
+            $active={pathname === "/dashboard/welcome"}
+            $isOpen={isOpen}
+          >
             <img src="/home.svg" alt="home svg icon" height={20} width={20} />
-            <span>Home</span>
+            {isOpen && <span>Home</span>}
           </SideBarButtons>
         </StyledLink>
         <StyledLink href="/dashboard/ptodash/mycalendar">
-          <SideBarButtons>
+          <SideBarButtons
+            $active={pathname === "/dashboard/ptodash/mycalendar"}
+            $isOpen={isOpen}
+          >
             <img src="/work.svg" alt="home svg icon" height={20} width={20} />
-            <span>PTO</span>
+            {isOpen && <span>PTO</span>}
           </SideBarButtons>
         </StyledLink>
 
         <StyledLink href="/dashboard/ptodash/employees">
-          <SideBarButtons>
+          <SideBarButtons
+            $active={pathname === "/dashboard/ptodash/employees"}
+            $isOpen={isOpen}
+          >
             <img src="/user.svg" alt="home svg icon" height={20} width={20} />
-            <span>Employees</span>
+            {isOpen && <span>Employees</span>}
           </SideBarButtons>
         </StyledLink>
       </SideBarItems>
       <UserControls>
-        <SideBarButtons>
+        <SideBarButtons $borderbottom={true} $isOpen={isOpen}>
           <img src="/user.svg" alt="home svg icon" height={20} width={20} />
-          <span>Name</span>
+          {isOpen && <span>Name</span>}
         </SideBarButtons>
         <br />
-        <SideBarButtons>
+        <SideBarButtons $isOpen={isOpen}>
           <img src="/logout.svg" alt="home svg icon" height={20} width={20} />
-          <span>LogOut</span>
+          {isOpen && <span>LogOut</span>}
         </SideBarButtons>
       </UserControls>
     </SideBarComponent>

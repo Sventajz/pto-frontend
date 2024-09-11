@@ -1,10 +1,16 @@
 import styled, { css } from "styled-components";
 import Link from "next/link";
 
-export const SideBarComponent = styled.div`
+interface InterfaceActiveProp {
+  $active?: boolean;
+  $borderbottom?: boolean;
+  $isOpen?: boolean;
+}
+
+export const SideBarComponent = styled.div<InterfaceActiveProp>`
   background-color: #ffffff;
   height: 100%;
-  width: "220px";
+  width: ${(props) => (props.$isOpen ? "220px" : "50px")};
   display: flex;
   flex-direction: column;
   z-index: 2;
@@ -13,14 +19,14 @@ export const SideBarComponent = styled.div`
   @media (max-width: 950px) {
     height: 100vh;
   }
-  /* ${(props) =>
+  ${(props) =>
     !props.$isOpen &&
     css`
       justify-content: center;
-    `} */
+    `}
 `;
 
-export const Banner = styled.div`
+export const Banner = styled.div<InterfaceActiveProp>`
   display: flex;
   width: 90%;
   justify-content: center;
@@ -32,14 +38,14 @@ export const Banner = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  /* ${(props) =>
+  ${(props) =>
     !props.$isOpen &&
     css`
       justify-content: center;
-    `} */
+    `}
 `;
 
-export const SideBarButtons = styled.li`
+export const SideBarButtons = styled.li<InterfaceActiveProp>`
   font-weight: bold;
   display: flex;
   justify-content: left;
@@ -56,7 +62,7 @@ export const SideBarButtons = styled.li`
     transition: 0.5s;
   }
 
-  /* ${({ $active }) =>
+  ${({ $active }) =>
     $active &&
     css`
       background-color: #efebff;
@@ -73,7 +79,7 @@ export const SideBarButtons = styled.li`
     css`
       justify-content: center;
       transition: 0.5s;
-    `} */
+    `}
 `;
 
 export const SideBarItems = styled.div`
@@ -96,21 +102,21 @@ export const UserControls = styled.div`
   margin-bottom: 10px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)<InterfaceActiveProp>`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* ${({ $active }) =>
+  ${({ $active }) =>
     $active &&
     css`
       border-bottom: 4px solid #5c36ff;
-    `} */
+    `}
 `;
 
-export const HamburgerButton = styled.button`
+export const HamburgerButton = styled.button<InterfaceActiveProp>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -132,18 +138,18 @@ export const HamburgerButton = styled.button`
     position: relative;
     transform-origin: 1px;
 
-    /* :first-child {
+    :first-child {
       transform: ${({ $isOpen }) => ($isOpen ? "rotate(45deg)" : "rotate(0)")};
     }
 
     :nth-child(2) {
       opacity: ${({ $isOpen }) => ($isOpen ? "0" : "1")};
       transform: ${({ $isOpen }) =>
-      $isOpen ? "translateX(20px)" : "translateX(0)"};
+        $isOpen ? "translateX(20px)" : "translateX(0)"};
     }
 
     :nth-child(3) {
       transform: ${({ $isOpen }) => ($isOpen ? "rotate(-45deg)" : "rotate(0)")};
-    }*/
+    }
   }
 `;

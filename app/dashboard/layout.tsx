@@ -2,7 +2,8 @@
 
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { useServerInsertedHTML } from "next/navigation";
-import { MainStyle, DashboardWrapper } from "./welcome/styled"; //import { useEffect, useState } from "react";
+import { MainStyle, DashboardWrapper } from "./welcome/styled";
+//import { useEffect, useState } from "react";
 
 //import apiClient from "../api/services";
 import SideBar from "../components/SidebarComponent";
